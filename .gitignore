@@ -14,4 +14,4 @@ venv*/
 .tox
 .cache
 /version.txt
-helium/_version.py
+geckoboard/_version.py
