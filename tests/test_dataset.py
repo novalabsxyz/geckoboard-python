@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 from geckoboard import Dataset, Field as F
 from datetime import date, datetime, timedelta
-from builtins import dict
 
 
 def test_create_delete(session):
