@@ -9,9 +9,7 @@ class Session(requests.Session):
                  base_url='https://api.geckoboard.com/datasets'):
         super(Session, self).__init__()
         self._base_url = base_url
-        self.headers.update({
-            'Authorization': api_key
-        })
+        self.auth = requests.auth.HTTPBasicAuth(api_key, None)
 
     def build_url(self, *args, **kwargs):
         parts = [kwargs.get('base_url', self._base_url)]

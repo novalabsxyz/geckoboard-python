@@ -1,0 +1,82 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2016-09-25T21:30:06",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"fields\": {\"string\": {\"type\": \"string\", \"name\": \"String\"}, \"money\": {\"type\": \"money\", \"name\": \"Dollars\", \"currency_code\": \"USD\"}, \"number\": {\"type\": \"number\", \"name\": \"Number\"}, \"datetime\": {\"type\": \"datetime\", \"name\": \"Date Time\"}, \"date\": {\"type\": \"date\", \"name\": \"Date\"}, \"percentage\": {\"type\": \"percentage\", \"name\": \"Percentage\"}}}"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Authorization": "<AUTH_TOKEN>",
+          "Connection": "keep-alive",
+          "Content-Length": "336",
+          "Content-Type": "application/json",
+          "User-Agent": "python-requests/2.10.0"
+        },
+        "method": "PUT",
+        "uri": "https://api.geckoboard.com/datasets/test"
+      },
+      "response": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"id\":\"test\",\"fields\":{\"date\":{\"type\":\"date\",\"name\":\"Date\"},\"datetime\":{\"type\":\"datetime\",\"name\":\"Date Time\"},\"money\":{\"type\":\"money\",\"name\":\"Dollars\",\"currency_code\":\"USD\"},\"number\":{\"type\":\"number\",\"name\":\"Number\"},\"percentage\":{\"type\":\"percentage\",\"name\":\"Percentage\"},\"string\":{\"type\":\"string\",\"name\":\"String\"}},\"created_at\":\"2016-09-25T21:30:06.243839Z\",\"updated_at\":\"2016-09-25T21:30:06.243839Z\"}\n"
+        },
+        "headers": {
+          "Connection": "keep-alive",
+          "Content-Length": "403",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Sun, 25 Sep 2016 21:30:06 GMT",
+          "Server": "nginx",
+          "X-Request-Id": "d6e15930-3b5a-452e-bd98-4a46ee8a2a57"
+        },
+        "status": {
+          "code": 201,
+          "message": "Created"
+        },
+        "url": "https://api.geckoboard.com/datasets/test"
+      }
+    },
+    {
+      "recorded_at": "2016-09-25T21:30:06",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": ""
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Authorization": "<AUTH_TOKEN>",
+          "Connection": "keep-alive",
+          "Content-Length": "0",
+          "User-Agent": "python-requests/2.10.0"
+        },
+        "method": "DELETE",
+        "uri": "https://api.geckoboard.com/datasets/test"
+      },
+      "response": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{}\n"
+        },
+        "headers": {
+          "Connection": "keep-alive",
+          "Content-Length": "3",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Sun, 25 Sep 2016 21:30:06 GMT",
+          "Server": "nginx",
+          "X-Request-Id": "897e882f-4741-4970-841a-246dcecf6b51"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://api.geckoboard.com/datasets/test"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.0"
+}

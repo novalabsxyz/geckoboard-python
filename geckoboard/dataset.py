@@ -4,44 +4,53 @@ from iso4217 import Currency
 
 
 class Field(object):
-    def __init__(self, id, type, name, currency_code=None):
-        self.id = id
+    def __init__(self, type, name, currency_code=None):
         self.type = type
         self.name = name
         self.currency_code = currency_code
         if currency_code is not None:
             self._money = getattr(Currency, currency_code.lower())
 
-    @staticmethod
-    def date(id, name):
-        return Field('date', id, name)
+    def __eq__(self, other):
+        return all([
+            self.type == getattr(other, 'type', None),
+            self.name == getattr(other, 'name', None),
+            self.currency_code == getattr(other, "currency_code", None)
+        ])
+
+    def __ne__(self, other):
+        return not self == other
 
     @staticmethod
-    def datetime(id, name):
-        return Field('datetime', id, name)
+    def date(name):
+        return Field('date', name)
 
     @staticmethod
-    def number(id, name):
-        return Field('number', id, name)
+    def datetime(name):
+        return Field('datetime', name)
 
     @staticmethod
-    def percentage(id, name):
-        return Field('percentage', id, name)
+    def number(name):
+        return Field('number', name)
 
     @staticmethod
-    def string(id, name):
-        return Field('string', id, name)
+    def percentage(name):
+        return Field('percentage', name)
 
     @staticmethod
-    def money(id, name, currency_code):
-        return Field('money', id, name)
+    def string(name):
+        return Field('string', name)
+
+    @staticmethod
+    def money(name, currency_code):
+        return Field('money', name, currency_code=currency_code)
 
     @classmethod
-    def from_schema(cls, id, json):
+    def from_schema(cls, json):
         type = json.get('type')
         name = json.get('name')
         currency_code = json.get('currency_code', None)
-        return cls(id, type, name, currency_code=currency_code)
+        return cls(type, name, currency_code=currency_code)
 
     def to_schema(self):
         value = {
@@ -50,16 +59,16 @@ class Field(object):
         }
         if self.type == 'money':
             value['currency_code'] = self.currency_code
-
         return value
 
     def to_json(self, value):
+        type = self.type
         if type == 'date':
             value = value.isoformat()
         elif type == 'datetime':
             value = value.isoformat() + 'Z'
         elif type == 'money':
-            value = value * self._money.exponent
+            value = value * 10**self._money.exponent
 
         return value
 
@@ -75,32 +84,37 @@ class Dataset(object):
     def from_json(cls, session, json):
         id = json.get('id')
         fields = json.get('fields')
-        fields = {f[0]: Field.from_schema(f[0], f[1])
-                  for f in iteritems(fields)}
+        fields = {f[0]: Field.from_schema(f[1]) for f in iteritems(fields)}
         return cls(session, id, fields)
 
     @classmethod
     def create(cls, session, id, fields):
         json = {
-            'fields': {field.id: field.to_schema() for field in fields}
+            'fields': {f[0]: f[1].to_schema() for f in iteritems(fields)}
         }
         url = session.build_url(id)
         response = session.put(url, json=json)
-        response.raise_for_error()
-        cls.from_json(session, response.json())
+        response.raise_for_status()
+        return cls.from_json(session, response.json())
 
     def replace(self, data):
-        session = self._session
-        fields = self.fields
-
         def _fields_json(entry):
+            fields = self.fields
             return {f[0]: fields[f[0]].to_json(f[1])
                     for f in iteritems(entry)}
 
         json = {
             'data': [_fields_json(entry) for entry in data]
         }
+        session = self._session
         url = session.build_url(self.id, 'data')
         response = session.put(url, json=json)
-        response.raise_for_error()
+        response.raise_for_status()
+        return True
+
+    def delete(self):
+        session = self._session
+        url = session.build_url(self.id)
+        response = self._session.delete(url)
+        response.raise_for_status()
         return True

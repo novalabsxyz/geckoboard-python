@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
-from session import Session
-from dataset import Dataset, Field
+from .session import Session
+from .dataset import Dataset, Field
 from .__about__ import (
     __package_name__, __title__, __author__, __author_email__,
     __license__, __copyright__, __version__, __revision__,
