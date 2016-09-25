@@ -1,0 +1,17 @@
+*.pyc
+*.swp
+docs/_build
+build
+dist
+*.egg-info/
+*.egg
+*.eggs
+venv/
+venv*/
+.env
+.coverage
+.python-version
+.tox
+.cache
+/version.txt
+helium/_version.py
