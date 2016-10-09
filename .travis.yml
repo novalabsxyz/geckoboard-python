@@ -1,0 +1,37 @@
+language: python
+
+python:
+  - "2.7"
+  - "3.5"
+
+install:
+  - pip install tox-travis
+  - pip install coveralls
+
+env:
+  global:
+    - TRAVIS="True"
+
+script:
+  - tox
+
+after_success:
+  coveralls
+
+notifications:
+  email:
+    recipients:
+      - marc@helium.com
+    on_failure: change
+    on_success: never
+
+deploy:
+  - provider: pypi
+    skip_cleanup: true
+    user: madninja
+    on:
+      tags: true
+      distributions: "sdist"
+      repo: helium/geckoboard-python
+    password:
+      secure: "leM/kIfbH5WEFf/R7PElgVvlaLHu3hQnpFkFYZEKrhVB/aXoKlROGYawLU0dKVNfpbnIAKh2Z+ZZOBs1c1HSQh0uiBRFByVUrVoI8/rZs5dfNUZ0bxjnBWuhVq8WR8ghD0rYOD/YL2yscgvu9XJc/Vaqza1DnMt/0iKu7em5PcCbi1v4lZ0ZBkm1ddcC41pqMClq8yhuZYgxgQDxwXqkYxPc8QoO6WDAOjyffG/mFZXiTncZ8AqEyubjzaG1pPjX//3WnfKdZJiXlsvRzJ6blOdOKnIIUu9X8ZtCarOvesC+HbbibOF/A0g9i75+WF+o3bm/tWBIIinfTZOCDTpaSLytLXP7iEuez2z6k6EuJcg3b0FIkX2TKmdE7GWx9hEZiTtqocGiloHRUuphJq/G8ilBVkHeEN1cDXxRb3+2YuC9G6aJm35FILbGkqBktHTm9UHRxQbbSpKfP4YqLcSy8Lma2tyZlfUsBIE7ZyQmCW1wf456HmyKJ8XTkcvC8tJvMPlwWhSy9hFbBK/b4zSM0K0AGC3n2/B6TU3WKqWoA2lV3xBf6JMJvPjvmtqb9vOEs47m2WNJ4NSOxtLWmzCsEFJqKHmZmd+UyPJEM7OeXSW76yXj2dokVS7piBBEWDnZfERZ12z09eFI56ty/qIaW6FLmIYDsFU4rOjnRQoTt1w="
