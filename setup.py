@@ -15,7 +15,7 @@ with open('README.md', 'r') as infile:
     long_description = infile.read()
 
 setup(
-    name='gecko-dataset',
+    name='geckoboard-python',
     description='Wrapper for the Geckboboard DataSet API',
     long_description=long_description,
     author=author,
