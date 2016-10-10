@@ -113,9 +113,7 @@ class Dataset(object):
         if unique_by:
             json['unique_by'] = unique_by
         url = session.build_url(id)
-        print json
         response = session.put(url, json=json)
-        print response
         response.raise_for_status()
         return cls.from_json(session, response.json())
 
