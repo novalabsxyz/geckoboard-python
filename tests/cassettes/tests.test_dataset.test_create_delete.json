@@ -1,18 +1,18 @@
 {
   "http_interactions": [
     {
-      "recorded_at": "2016-09-25T21:30:06",
+      "recorded_at": "2016-10-10T19:38:21",
       "request": {
         "body": {
           "encoding": "utf-8",
-          "string": "{\"fields\": {\"string\": {\"type\": \"string\", \"name\": \"String\"}, \"money\": {\"type\": \"money\", \"name\": \"Dollars\", \"currency_code\": \"USD\"}, \"number\": {\"type\": \"number\", \"name\": \"Number\"}, \"datetime\": {\"type\": \"datetime\", \"name\": \"Date Time\"}, \"date\": {\"type\": \"date\", \"name\": \"Date\"}, \"percentage\": {\"type\": \"percentage\", \"name\": \"Percentage\"}}}"
+          "string": "{\"unique_by\": [\"date\"], \"fields\": {\"number\": {\"name\": \"Number\", \"type\": \"number\"}, \"money\": {\"name\": \"Dollars\", \"type\": \"money\", \"currency_code\": \"USD\"}, \"percentage\": {\"name\": \"Percentage\", \"type\": \"percentage\"}, \"string\": {\"name\": \"String\", \"type\": \"string\"}, \"date\": {\"name\": \"Date\", \"type\": \"date\"}, \"datetime\": {\"name\": \"Date Time\", \"type\": \"datetime\"}}}"
         },
         "headers": {
           "Accept": "*/*",
           "Accept-Encoding": "gzip, deflate",
           "Authorization": "<AUTH_TOKEN>",
           "Connection": "keep-alive",
-          "Content-Length": "336",
+          "Content-Length": "359",
           "Content-Type": "application/json",
           "User-Agent": "python-requests/2.10.0"
         },
@@ -22,15 +22,15 @@
       "response": {
         "body": {
           "encoding": "utf-8",
-          "string": "{\"id\":\"test\",\"fields\":{\"date\":{\"type\":\"date\",\"name\":\"Date\"},\"datetime\":{\"type\":\"datetime\",\"name\":\"Date Time\"},\"money\":{\"type\":\"money\",\"name\":\"Dollars\",\"currency_code\":\"USD\"},\"number\":{\"type\":\"number\",\"name\":\"Number\"},\"percentage\":{\"type\":\"percentage\",\"name\":\"Percentage\"},\"string\":{\"type\":\"string\",\"name\":\"String\"}},\"created_at\":\"2016-09-25T21:30:06.243839Z\",\"updated_at\":\"2016-09-25T21:30:06.243839Z\"}\n"
+          "string": "{\"id\":\"test\",\"fields\":{\"date\":{\"type\":\"date\",\"name\":\"Date\"},\"datetime\":{\"type\":\"datetime\",\"name\":\"Date Time\"},\"money\":{\"type\":\"money\",\"name\":\"Dollars\",\"currency_code\":\"USD\"},\"number\":{\"type\":\"number\",\"name\":\"Number\"},\"percentage\":{\"type\":\"percentage\",\"name\":\"Percentage\"},\"string\":{\"type\":\"string\",\"name\":\"String\"}},\"unique_by\":[\"date\"],\"created_at\":\"2016-10-10T19:38:21.626749Z\",\"updated_at\":\"2016-10-10T19:38:21.626749Z\"}\n"
         },
         "headers": {
           "Connection": "keep-alive",
-          "Content-Length": "403",
+          "Content-Length": "424",
           "Content-Type": "application/json; charset=utf-8",
-          "Date": "Sun, 25 Sep 2016 21:30:06 GMT",
+          "Date": "Mon, 10 Oct 2016 19:38:21 GMT",
           "Server": "nginx",
-          "X-Request-Id": "d6e15930-3b5a-452e-bd98-4a46ee8a2a57"
+          "X-Request-Id": "f5067b14-7a1c-4dd5-a126-94cded864c42"
         },
         "status": {
           "code": 201,
@@ -40,7 +40,7 @@
       }
     },
     {
-      "recorded_at": "2016-09-25T21:30:06",
+      "recorded_at": "2016-10-10T19:38:21",
       "request": {
         "body": {
           "encoding": "utf-8",
@@ -66,9 +66,9 @@
           "Connection": "keep-alive",
           "Content-Length": "3",
           "Content-Type": "application/json; charset=utf-8",
-          "Date": "Sun, 25 Sep 2016 21:30:06 GMT",
+          "Date": "Mon, 10 Oct 2016 19:38:21 GMT",
           "Server": "nginx",
-          "X-Request-Id": "897e882f-4741-4970-841a-246dcecf6b51"
+          "X-Request-Id": "21203897-5ef1-49c8-b4b9-e94fd9f44f93"
         },
         "status": {
           "code": 200,
