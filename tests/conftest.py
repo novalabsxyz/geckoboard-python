@@ -15,7 +15,6 @@ API_TOKEN = os.environ.get('GECKO_API_KEY', 'X' * 10)
 RECORD_MODE = os.environ.get('GECKO_RECORD_MODE', 'none')
 RECORD_FOLDER = os.environ.get('GECKO_RECORD_FOLDER', 'tests/cassettes')
 
-
 with Betamax.configure() as config:
     config.cassette_library_dir = RECORD_FOLDER
     record_mode = RECORD_MODE
@@ -24,6 +23,7 @@ with Betamax.configure() as config:
     cassette_options['serialize_with'] = 'prettyjson'
     config.define_cassette_placeholder('<AUTH_TOKEN>',
                                        _basic_auth_str(API_TOKEN, None))
+    config.define_cassette_placeholder('<AUTH_TOKEN>', API_TOKEN)
 
 
 @pytest.fixture

@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from future.utils import viewitems, viewvalues
+from future.utils import viewitems
 from iso4217 import Currency
 
 
@@ -112,7 +112,7 @@ class Dataset(object):
         unique_by = [f[0] for f in viewitems(fields) if f[1].unique]
         if unique_by:
             json['unique_by'] = unique_by
-        url = session.build_url(id)
+        url = session.build_url('datasets', id)
         response = session.put(url, json=json)
         response.raise_for_status()
         return cls.from_json(session, response.json())
@@ -130,7 +130,7 @@ class Dataset(object):
 
     def replace(self, data):
         session = self._session
-        url = session.build_url(self.id, 'data')
+        url = session.build_url('datasets', self.id, 'data')
         json = self._build_data_json(data)
 
         response = session.put(url, json=json)
@@ -139,7 +139,7 @@ class Dataset(object):
 
     def append(self, data, delete_by=None):
         session = self._session
-        url = session.build_url(self.id, 'data')
+        url = session.build_url('datasets', self.id, 'data')
         json = self._build_data_json(data)
         if delete_by is not None:
             json['delete_by'] = delete_by
@@ -150,7 +150,7 @@ class Dataset(object):
 
     def delete(self):
         session = self._session
-        url = session.build_url(self.id)
+        url = session.build_url('datasets', self.id)
         response = self._session.delete(url)
         response.raise_for_status()
         return True

@@ -1,0 +1,44 @@
+{
+  "http_interactions": [
+    {
+      "recorded_at": "2016-10-16T19:06:28",
+      "request": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"api_key\": \"<AUTH_TOKEN>\", \"data\": {\"item\": [{\"text\": \"Overdue\", \"value\": 20}, {}, {\"text\": \"Good\", \"value\": 80}]}}"
+        },
+        "headers": {
+          "Accept": "*/*",
+          "Accept-Encoding": "gzip, deflate",
+          "Authorization": "<AUTH_TOKEN>",
+          "Connection": "keep-alive",
+          "Content-Length": "136",
+          "Content-Type": "application/json",
+          "User-Agent": "python-requests/2.10.0"
+        },
+        "method": "POST",
+        "uri": "https://push.geckoboard.com/v1/send/120885-142a61f0-74a2-0134-3615-22000b5980c2"
+      },
+      "response": {
+        "body": {
+          "encoding": "utf-8",
+          "string": "{\"success\":true}\n"
+        },
+        "headers": {
+          "Connection": "keep-alive",
+          "Content-Length": "17",
+          "Content-Type": "application/json; charset=utf-8",
+          "Date": "Sun, 16 Oct 2016 19:06:27 GMT",
+          "Server": "nginx",
+          "X-Request-Id": "01f47ccd-3845-469f-b37a-d2362eb2b907"
+        },
+        "status": {
+          "code": 200,
+          "message": "OK"
+        },
+        "url": "https://push.geckoboard.com/v1/send/120885-142a61f0-74a2-0134-3615-22000b5980c2"
+      }
+    }
+  ],
+  "recorded_with": "betamax/0.8.0"
+}
