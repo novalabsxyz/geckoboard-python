@@ -5,7 +5,7 @@ author_email = 'hello@helium.com'
 packages = ['geckoboard']
 requires = [
     "future>=0.15",
-    "requests<2.11",
+    "requests>=2.12.5",
     "iso4217",
 ]
 setup_requires = [
